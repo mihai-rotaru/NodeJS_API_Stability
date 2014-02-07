@@ -23,7 +23,7 @@ function parse_api_stability(html_text) {
 function callback(xhr, li){
     if (xhr.readyState==4 && xhr.status==200) {		
         var stab = document.createElement('span');
-        stab.innerHTML = parse_api_stability(xhr.responseText);
+        stab.innerHTML = " " + parse_api_stability(xhr.responseText);
         unsafeWindow.console.log(stab.innerHTML);
         li.appendChild(stab);
     }
@@ -53,27 +53,6 @@ for( i=0; i<items.length; i++ ) {
         // ajax for each item in list
         if( href !== 'documentation.html' && href !== 'synopsis.html' ){
             request(url,li,callback);
-
-//            var requestURL = url;
-//            var xmlhttp = null;
-
-//            if (window.XMLHttpRequest) {
-//                //IE7+, Firefox, Chrome, Opera, Safari
-//                xmlhttp = new XMLHttpRequest();
-//            }
-
-//            xmlhttp.open('GET',requestURL,true);
-//            xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest'); 
-//            xmlhttp.send(null);
-
-//            xmlhttp.onreadystatechange = function() {
-//                if (xmlhttp.readyState==4 && xmlhttp.status==200) {		
-//                    stab.innerHTML = parse_api_stability(xmlhttp.responseText);
-//                    unsafeWindow.console.log(stab.innerHTML);
-//                    li.appendChild(stab);
-//                }
-//            }
-
         }
     }
 }
