@@ -7,6 +7,17 @@
 // @grant       none
 // ==/UserScript==
 
+// index in array represents stability code
+var colors = [
+    '#D60027',
+    '#EC5315',
+    '#FFD700',
+    '#AEC516',
+    '#009431',
+    '#0084B6'
+];
+
+
 // function that extracts stability info
 function parse_api_stability(html_text) {
     var re = /api_stability_(\d)/i;
@@ -18,7 +29,9 @@ function parse_api_stability(html_text) {
 function callback(xhr, li){
     if (xhr.readyState==4 && xhr.status==200) {		
         var stab = document.createElement('span');
-        stab.innerHTML = " " + parse_api_stability(xhr.responseText);
+        var stab_s = parse_api_stability(xhr.responseText);
+        stab.style.color = colors[parseInt(stab_s)];
+        stab.innerHTML = " " + stab_s;
         unsafeWindow.console.log(stab.innerHTML);
         li.appendChild(stab);
     }
