@@ -14,6 +14,7 @@ function parse_api_stability(html_text) {
     return res.length > 0 ? res[1]: null;
 };
 
+// http://stackoverflow.com/a/7945814/447661
 function callback(xhr, li){
     if (xhr.readyState==4 && xhr.status==200) {		
         var stab = document.createElement('span');
@@ -23,10 +24,11 @@ function callback(xhr, li){
     }
 }
 
-function request(url, anchor, callback){
+// li - list item to which the stability index will be apppended
+function request(url, li, callback){
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function(){
-        callback(xhr,anchor);
+        callback(xhr, li);
     };
     xhr.open('GET', url, true);
     xhr.send('');
