@@ -9,15 +9,9 @@
 
 // function that extracts stability info
 function parse_api_stability(html_text) {
-//    unsafeWindow.console.log(html_text);
     var re = /api_stability_(\d)/i;
     var res = html_text.match(re);
-    //unsafeWindow.console.log(res[1]);
-    if(res.length > 0) {
-        return res[1];
-    } else {
-        return null;
-    }
+    return res.length > 0 ? res[1]: null;
 };
 
 function callback(xhr, li){
